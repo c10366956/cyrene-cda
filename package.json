@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "@ag-ui/client": "1.0.0",
-    "@ag-ui/core": "1.0.0",
+    "@ag-ui/core": "1.0.1",
     "@ant-design/cssinjs": "^2.1.2",
     "@ant-design/icons": "^6.3.4",
     "@ant-design/x": "^2.9.0",
