@@ -123,7 +123,7 @@
     "js-yaml": "^5.0.0",
     "katex": "^0.16.47",
     "llamaindex": "^0.12.1",
-    "lucide-react": "^1.32.0",
+    "lucide-react": "^1.49.0",
     "marked": "^16.4.2",
     "mdast-util-to-string": "^4.0.0",
     "motion": "^13.4.3",
