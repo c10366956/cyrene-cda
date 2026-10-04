@@ -1,0 +1,628 @@
+.plugin-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--rb-surface-workspace, #fff);
+  user-select: none;
+}
+
+.plugin-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 28px 4px;
+  flex-shrink: 0;
+}
+
+.plugin-panel__heading {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 14px;
+  align-items: center;
+  min-width: 0;
+}
+
+.plugin-panel__title {
+  margin: 0;
+  color: var(--rb-text-primary, #1d1d1f);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.plugin-panel__subtitle {
+  margin: 6px 0 0;
+  color: var(--rb-text-secondary, #6e6e73);
+  font-size: 12px;
+}
+
+/* 收录仓库链接行：链接用强调色，普通点击与辅助键点击均由主进程转交系统浏览器打开 */
+.plugin-panel__registry {
+  margin-top: 4px;
+}
+
+.plugin-panel__registry-link {
+  color: var(--rb-accent, #ff5b8a);
+  text-decoration: none;
+}
+
+.plugin-panel__registry-link:hover {
+  text-decoration: underline;
+}
+
+.plugin-panel__source-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 28px 0;
+  flex-shrink: 0;
+}
+
+.plugin-panel__source-switch-label {
+  color: var(--rb-text-secondary, #6e6e73);
+  font-size: 11px;
+  margin-right: 2px;
+}
+
+.plugin-panel__source-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  border: 1px solid var(--rb-border-default, #e5e5ea);
+  border-radius: 999px;
+  color: var(--rb-text-secondary, #6e6e73);
+  background: transparent;
+  font-size: 11px;
+  line-height: 18px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.plugin-panel__source-chip:hover:not(:disabled) {
+  border-color: var(--cy-pill-border, #ff9fbd);
+  color: var(--rb-accent, #ff5b8a);
+}
+
+.plugin-panel__source-chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* 数据源（当前提供列表的源）用强调色加粗 */
+.plugin-panel__source-chip.is-used {
+  border-color: var(--rb-accent, #ff5b8a);
+  color: var(--rb-accent, #ff5b8a);
+  font-weight: 600;
+}
+
+/* 探测失败（已死）的源标红并划线 */
+.plugin-panel__source-chip.is-dead {
+  border-color: var(--rb-danger, #e5484d);
+  color: var(--rb-danger, #e5484d);
+  text-decoration: line-through;
+}
+
+
+.plugin-panel__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.plugin-panel__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--rb-border-default, #e8e8ec);
+  border-radius: 10px;
+  color: var(--rb-text-secondary, #6e6e73);
+  background: var(--rb-surface-page, #f8f7f6);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.plugin-panel__icon-button:hover:not(:disabled) {
+  color: var(--rb-accent, #ff5b8a);
+  border-color: var(--cy-pill-border, #ff9fbd);
+}
+
+.plugin-panel__icon-button.is-accent {
+  color: #fff;
+  border-color: var(--rb-accent, #ff5b8a);
+  background: var(--rb-accent, #ff5b8a);
+}
+
+.plugin-panel__icon-button.is-accent:hover:not(:disabled) {
+  color: #fff;
+  background: var(--rb-accent-hover, #f04b7c);
+}
+
+.plugin-panel__icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.plugin-panel__search-row {
+  padding: 14px 28px 0;
+  flex-shrink: 0;
+}
+
+.plugin-panel__search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 16px;
+  border: 1px solid var(--rb-border-default, #e8e8ec);
+  border-radius: 10px;
+  outline: none;
+  color: var(--rb-text-primary, #1d1d1f);
+  background: var(--rb-surface-page, #f8f7f6);
+  font-size: 13px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plugin-panel__search:focus {
+  border-color: var(--cy-pill-border, #ff9fbd);
+  box-shadow: 0 0 0 3px rgba(255, 91, 138, 0.1);
+}
+
+.plugin-panel__notices {
+  display: grid;
+  gap: 6px;
+  padding: 10px 28px 0;
+}
+
+.plugin-panel__notice {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #8a5a00;
+  background: rgba(255, 179, 0, 0.1);
+  font-size: 12px;
+}
+
+.plugin-panel__notice.is-error {
+  color: #c9342d;
+  background: rgba(255, 69, 58, 0.08);
+}
+
+.plugin-panel__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 10px 16px;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 14px 28px 24px;
+}
+
+.plugin-panel__loading,
+.plugin-panel__empty {
+  grid-column: 1 / -1;
+  padding: 40px 12px;
+  color: var(--rb-text-secondary, #6e6e73);
+  font-size: 12px;
+  text-align: center;
+}
+
+.plugin-card-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+}
+
+.plugin-card-ui:hover {
+  background: var(--rb-surface-page, #f8f7f6);
+}
+
+.plugin-card-ui__main {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.plugin-card-ui__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  border-radius: 10px;
+  color: var(--rb-text-secondary, #6e6e73);
+  background: var(--rb-surface-page, #f8f7f6);
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.plugin-card-ui__icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.plugin-card-ui__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.plugin-card-ui__name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.plugin-card-ui__name {
+  overflow: hidden;
+  color: var(--rb-text-primary, #1d1d1f);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plugin-card-ui__version {
+  color: var(--rb-text-secondary, #6e6e73);
+  font-size: 10.5px;
+  flex-shrink: 0;
+}
+
+.plugin-card-ui__status {
+  padding: 1px 6px;
+  border-radius: 999px;
+  color: var(--rb-text-secondary, #6e6e73);
+  background: var(--rb-surface-page, #f1f1f4);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.plugin-card-ui__status.is-running {
+  color: #23884e;
+  background: rgba(52, 199, 89, 0.12);
+}
+
+.plugin-card-ui__status.is-failed {
+  color: #c9342d;
+  background: rgba(255, 69, 58, 0.1);
+}
+
+.plugin-card-ui__status.is-starting,
+.plugin-card-ui__status.is-stopping {
+  color: #9b6700;
+  background: rgba(255, 179, 0, 0.12);
+}
+
+.plugin-card-ui__description,
+.plugin-card-ui__developer,
+.plugin-card-ui__error {
+  margin: 3px 0 0;
+  overflow: hidden;
+  color: var(--rb-text-secondary, #6e6e73);
+  font-size: 11.5px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plugin-card-ui__developer {
+  font-size: 11px;
+}
+
+.plugin-card-ui__error {
+  color: #c9342d;
+}
+
+.plugin-card-ui__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  padding-left: 54px;
+}
+
+.plugin-card-ui__button {
+  min-width: 52px;
+  padding: 5px 10px;
+  border: 1px solid var(--rb-border-default, #e8e8ec);
+  border-radius: 999px;
+  color: var(--rb-text-secondary, #6e6e73);
+  background: var(--rb-surface-workspace, #fff);
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.plugin-card-ui__button:hover:not(:disabled) {
+  color: var(--rb-accent, #ff5b8a);
+  border-color: var(--rb-surface-active, #fde0ed);
+  background: var(--rb-surface-active, #fde0ed);
+}
+
+.plugin-card-ui__button.is-enabled {
+  color: #fff;
+  border-color: var(--rb-accent, #ff5b8a);
+  background: var(--rb-accent, #ff5b8a);
+}
+
+.plugin-card-ui__button.is-danger:hover:not(:disabled) {
+  color: #c9342d;
+  border-color: rgba(255, 69, 58, 0.12);
+  background: rgba(255, 69, 58, 0.08);
+}
+
+.plugin-card-ui__button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.plugin-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.plugin-panel::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--rb-border-default, #e8e8ec);
+}
+
+@media (max-width: 760px) {
+  .plugin-panel__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.plugin-panel__heading-icon {
+  grid-row: span 3;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+/* 插件市场入口按钮内的小人图标 */
+.plugin-panel__market-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* 插件市场入口按钮：图标后跟文字标签，宽度自适应（其余图标按钮仍为 34px 方块） */
+.plugin-panel__icon-button.plugin-panel__market-toggle {
+  width: auto;
+  gap: 6px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 带文字后图标略缩，避免头重脚轻 */
+.plugin-panel__market-toggle .plugin-panel__market-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* 市场卡片元信息分隔符与下载量强调色 */
+.plugin-card-ui__meta-sep {
+  color: var(--rb-text-secondary, #6e6e73);
+}
+
+.plugin-card-ui__downloads {
+  color: var(--rb-accent, #ff5b8a);
+}
+
+.plugin-market-details-modal .ant-modal-content {
+  display: flex;
+  max-height: calc(100vh - 40px);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--rb-border-default, #ece8ec);
+  border-radius: 22px;
+  background: var(--rb-surface-card, #fff);
+  box-shadow: 0 24px 72px rgba(38, 20, 33, 0.2);
+}
+
+.plugin-market-details-modal .ant-modal-body {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 26px;
+}
+
+.plugin-market-details__header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.plugin-market-details__icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  place-items: center;
+  border: 1px solid rgba(255, 91, 138, 0.16);
+  border-radius: 17px;
+  background: linear-gradient(145deg, #fff2f7, #f9f1ff);
+}
+
+.plugin-market-details__icon img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.plugin-market-details__heading {
+  min-width: 0;
+}
+
+.plugin-market-details__name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.plugin-market-details__name-row h2 {
+  margin: 0;
+  color: var(--rb-text-primary, #242126);
+  font-size: 21px;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.plugin-market-details__heading p {
+  margin: 5px 0 0;
+  color: var(--rb-text-secondary, #77717b);
+  font-size: 12px;
+}
+
+.plugin-market-details__summary {
+  margin: 20px 0 13px;
+  color: var(--rb-text-primary, #3a353c);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.plugin-market-details__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--rb-text-secondary, #77717b);
+  font-size: 12px;
+}
+
+.plugin-market-details__sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 20px;
+}
+
+.plugin-market-details__section {
+  min-width: 0;
+  padding: 14px 15px;
+  border: 1px solid var(--rb-border-default, #eee9ee);
+  border-radius: 15px;
+  background: var(--rb-surface-page, #fbf9fb);
+}
+
+.plugin-market-details__section h3 {
+  margin: 0 0 8px;
+  color: var(--rb-text-primary, #343039);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.plugin-market-details__section ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  color: var(--rb-text-secondary, #68616c);
+  font-size: 12px;
+  line-height: 1.55;
+  list-style: none;
+}
+
+.plugin-market-details__section li {
+  position: relative;
+  padding-left: 13px;
+}
+
+.plugin-market-details__section li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 1px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--rb-accent, #ff5b8a);
+  content: "";
+}
+
+.plugin-market-details__loading,
+.plugin-market-details__empty,
+.plugin-market-details__fallback {
+  margin-top: 19px;
+  color: var(--rb-text-secondary, #77717b);
+  font-size: 12px;
+}
+
+.plugin-market-details__loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plugin-market-details__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 91, 138, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 91, 138, 0.06);
+}
+
+.plugin-market-details__fallback button,
+.plugin-market-details__link {
+  color: var(--rb-accent, #e94c7a);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.plugin-market-details__fallback button {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.plugin-market-details__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 17px;
+}
+
+.plugin-market-details__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 23px;
+  padding-top: 17px;
+  border-top: 1px solid var(--rb-border-default, #eee9ee);
+}
+
+@media (max-width: 560px) {
+  .plugin-market-details-modal {
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    margin: 12px auto;
+  }
+
+  .plugin-market-details-modal .ant-modal-body {
+    padding: 20px;
+  }
+
+  .plugin-market-details__sections {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

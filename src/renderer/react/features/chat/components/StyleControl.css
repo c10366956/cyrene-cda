@@ -1,0 +1,52 @@
+.cy-style-panel {
+  min-width: 180px;
+}
+
+.cy-style-panel > strong {
+  display: block;
+  margin: 2px 4px 8px;
+  color: var(--rb-text-primary);
+  font: 600 14px/1.35 var(--rb-font-sans, sans-serif);
+}
+
+.cy-style-panel__options {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cy-style-panel__option {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 9px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--rb-text-primary);
+  cursor: pointer;
+  font: 500 13px/1.25 var(--rb-font-sans, sans-serif);
+  text-align: left;
+}
+
+.cy-style-panel__option:hover {
+  background: var(--rb-surface-hover);
+  color: var(--rb-accent);
+}
+
+.cy-style-panel__option.is-active {
+  background: color-mix(in srgb, var(--rb-accent) 14%, transparent);
+  color: var(--rb-accent);
+}
+
+.cy-style-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  object-fit: contain;
+}
+
+.cy-style-control {
+  margin-left: 0;
+}

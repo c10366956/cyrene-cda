@@ -1,0 +1,311 @@
+.cy-todo {
+  position: fixed;
+  z-index: 1000;
+  app-region: no-drag;
+  -webkit-app-region: no-drag;
+  width: 240px;
+  background: var(--rb-task-card-surface);
+  border: 1px solid var(--rb-task-card-border);
+  border-radius: var(--rb-radius-lg);
+  box-shadow: var(--rb-task-card-shadow);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--rb-task-card-text);
+  overflow: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, width 0.25s ease, height 0.25s ease;
+}
+
+.cy-todo:not(.cy-todo--collapsed) {
+  display: flex;
+  flex-direction: column;
+  height: min(340px, calc(100vh - 96px));
+  min-height: min(260px, calc(100vh - 96px));
+}
+
+.cy-todo--collapsed .cy-todo__body {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cy-todo__dragbar {
+  width: 100%;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  cursor: grab;
+  padding: 0 10px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.cy-todo__dragbar:active {
+  cursor: grabbing;
+}
+
+.cy-todo__dragline {
+  width: 30px;
+  height: 3px;
+  border-radius: var(--rb-radius-full);
+  background: var(--rb-task-card-divider);
+}
+
+.cy-todo__toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rb-task-card-muted);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s, transform 0.25s ease;
+}
+
+.cy-todo__toggle:hover {
+  color: var(--rb-task-card-accent);
+  background: var(--rb-task-card-accent-soft);
+}
+
+.cy-todo--collapsed .cy-todo__toggle {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.cy-todo__body {
+  padding: 5px 12px 12px;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ── 模式胶囊 ── */
+.cy-todo__capsule-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.cy-todo__mode-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: var(--rb-radius-full);
+  background: var(--rb-task-card-accent-soft);
+  border: 1px solid var(--rb-task-card-accent-border);
+}
+
+.cy-todo__mode-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rb-task-card-accent);
+  box-shadow: 0 0 0 3px var(--rb-task-card-accent-ring);
+  flex-shrink: 0;
+}
+
+.cy-todo__mode-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--rb-task-card-accent);
+  line-height: 1;
+}
+
+/* ── 吉祥物 + 标题 ── */
+.cy-todo__hero {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 3px;
+  flex-shrink: 0;
+}
+
+.cy-todo__mascot {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: var(--rb-radius-md);
+  background: var(--rb-task-card-mascot-surface);
+  border: 1px solid var(--rb-task-card-accent-border);
+  animation: cy-todo-float 2.8s ease-in-out infinite;
+}
+
+@keyframes cy-todo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.cy-todo__hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cy-todo__hero-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rb-task-card-text);
+  line-height: 1.2;
+}
+
+.cy-todo__hero-sub {
+  font-size: 12px;
+  color: var(--rb-task-card-muted);
+  line-height: 1.2;
+}
+
+/* ── 分隔线 ── */
+.cy-todo__divider {
+  height: 1px;
+  background: var(--rb-task-card-divider);
+  margin: 11px 0;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ── 任务列表 ── */
+.cy-todo__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.cy-todo__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cy-todo__list::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--rb-task-card-accent) 30%, transparent);
+  border-radius: var(--rb-radius-full);
+}
+
+.cy-todo__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 7px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--rb-radius-md);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--rb-task-card-text);
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.cy-todo__item:not(.cy-todo__item--empty):not(.cy-todo__item--completed):hover {
+  background: var(--rb-task-card-hover);
+  border-color: var(--rb-task-card-accent-border);
+}
+
+.cy-todo__item--completed .cy-todo__content {
+  text-decoration: line-through;
+  color: var(--rb-task-card-complete);
+}
+
+.cy-todo__item--empty .cy-todo__content {
+  color: var(--rb-task-card-faint);
+  font-style: italic;
+}
+
+.cy-todo__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.cy-todo__bullet {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.cy-todo__content {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* ── 进度条 ── */
+.cy-todo__progress {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  min-height: 15px;
+}
+
+.cy-todo__footer {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.cy-todo__progress-bar {
+  grid-column: 1;
+  grid-row: 1;
+  height: 6px;
+  border-radius: var(--rb-radius-full);
+  background: var(--rb-task-card-accent);
+  transition: width 0.35s ease;
+}
+
+.cy-todo__progress::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 6px;
+  border-radius: var(--rb-radius-full);
+  background: var(--rb-task-card-progress-track);
+}
+
+.cy-todo__progress-text {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--rb-task-card-muted);
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-todo,
+  .cy-todo__body,
+  .cy-todo__toggle,
+  .cy-todo__item,
+  .cy-todo__progress-bar {
+    transition: none;
+  }
+
+  .cy-todo__mascot {
+    animation: none;
+  }
+}

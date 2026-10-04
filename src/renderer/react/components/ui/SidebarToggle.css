@@ -1,0 +1,51 @@
+.cy-sidebar-toggle {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: var(--rb-text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cy-sidebar-toggle:hover {
+  background: var(--rb-surface-hover);
+  color: var(--rb-text-primary);
+}
+
+.cy-sidebar-toggle:active {
+  background: var(--rb-surface-active);
+}
+
+.cy-sidebar-toggle > svg {
+  transform: scaleY(0.88);
+}
+
+/* 竖线 */
+.cy-sidebar-line {
+  transition: d 0.25s ease;
+}
+
+.cy-sidebar-toggle.is-hovered .cy-sidebar-line {
+  d: path("M16.8 14V34");
+}
+
+/* Chevron */
+.cy-sidebar-chevron {
+  opacity: 0;
+  transform-origin: 30px 24px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cy-sidebar-toggle.is-hovered .cy-sidebar-chevron {
+  opacity: 1;
+}
+
+/* 收起方向由页面根节点的 class 决定（见 .cy-page.is-collapsed），组件自身无状态 */
+.cy-page.is-collapsed .cy-sidebar-toggle.is-hovered .cy-sidebar-chevron {
+  transform: scaleX(-1);
+}

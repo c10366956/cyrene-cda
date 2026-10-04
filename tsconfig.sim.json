@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/sim",
+    "rootDir": "src",
+    "module": "commonjs",
+    "target": "es2022",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    // TS 6.0 起 types 默认为空（不再自动注入 @types/*），Node 类型需显式声明
+    "types": ["node"],
+    "declaration": false,
+    "strict": false,
+    "noImplicitAny": false
+  },
+  "include": [
+    "src/main/sim/**/*.ts",
+    "src/main/rag/worldbook.ts"
+  ]
+}

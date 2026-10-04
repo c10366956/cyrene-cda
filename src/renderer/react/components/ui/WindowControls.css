@@ -1,0 +1,28 @@
+.cy-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cy-winbtn {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--rb-text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cy-winbtn:hover {
+  background: var(--rb-surface-hover);
+  color: var(--rb-text-primary);
+}
+
+.cy-winbtn--close:hover {
+  background: #ff5f57;
+  color: #fff;
+}
