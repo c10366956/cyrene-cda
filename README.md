@@ -516,82 +516,10 @@ MIT 仅约束本仓库的源代码，不适用于角色、Live2D 模型与美术
 	<tbody>
 		<tr>
             <td align="center">
-                <a href="https://github.com/Playa-0v0">
-                    <img src="https://avatars.githubusercontent.com/u/300061045?v=4" width="48;" alt="Playa-0v0"/>
+                <a href="https://github.com/c10366956">
+                    <img src="https://avatars.githubusercontent.com/u/237810821?v=4" width="48;" alt="c10366956"/>
                     <br />
-                    <sub><b>Playa</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/lll69">
-                    <img src="https://avatars.githubusercontent.com/u/60803753?v=4" width="48;" alt="lll69"/>
-                    <br />
-                    <sub><b>lll69</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Unknownuserfrommars">
-                    <img src="https://avatars.githubusercontent.com/u/163658509?v=4" width="48;" alt="Unknownuserfrommars"/>
-                    <br />
-                    <sub><b>Tianzzi</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/yuxingyuzhong">
-                    <img src="https://avatars.githubusercontent.com/u/240125557?v=4" width="48;" alt="yuxingyuzhong"/>
-                    <br />
-                    <sub><b>雨行雨中</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/LZhWi">
-                    <img src="https://avatars.githubusercontent.com/u/306725149?v=4" width="48;" alt="LZhWi"/>
-                    <br />
-                    <sub><b>LZhWi</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/lucifergzsz414">
-                    <img src="https://avatars.githubusercontent.com/u/286201321?v=4" width="48;" alt="lucifergzsz414"/>
-                    <br />
-                    <sub><b>lucifergzsz414</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/liyi3068238601-oss">
-                    <img src="https://avatars.githubusercontent.com/u/289515629?v=4" width="48;" alt="liyi3068238601-oss"/>
-                    <br />
-                    <sub><b>梨衣、</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/modusensus">
-                    <img src="https://avatars.githubusercontent.com/u/286686549?v=4" width="48;" alt="modusensus"/>
-                    <br />
-                    <sub><b>Modusensus</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/boring9720">
-                    <img src="https://avatars.githubusercontent.com/u/20534568?v=4" width="48;" alt="boring9720"/>
-                    <br />
-                    <sub><b>chuxuan</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Tobi1chi">
-                    <img src="https://avatars.githubusercontent.com/u/49900770?v=4" width="48;" alt="Tobi1chi"/>
-                    <br />
-                    <sub><b>Tobi1chi</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/proobker">
-                    <img src="https://avatars.githubusercontent.com/u/89506631?v=4" width="48;" alt="proobker"/>
-                    <br />
-                    <sub><b>proobker</b></sub>
+                    <sub><b>c10366956</b></sub>
                 </a>
             </td>
 		</tr>
